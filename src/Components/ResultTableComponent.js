@@ -1,46 +1,10 @@
-import React from 'react';
-import { Divider, Table, Typography } from 'antd';
+import React, { useState } from 'react';
+import { Divider, Table, Input} from 'antd';
 import "../css_styles/antd_styles.css";
-import { CSVLink, CSVDownload } from 'react-csv';
+import { CSVLink } from 'react-csv';
+import columns from '../utils/column_structure'
 
-const RANK_WIDTH = 70;
-const LOGP_WIDTH = 120;
-const GSE_WIDTH = 150;
-
-
-const columns = [
-    {
-        title: <>Rank</>,
-        dataIndex: 'rank',
-        key: 'rank',
-        width: RANK_WIDTH
-    },
-    {
-        title: <>Title</>,
-        dataIndex: 'ttl',
-        key: 'ttl',
-        ellipsis: true
-        // render: (_, record) => (
-        //     <Typography.Text ellipsis={true} style={{width: TITLE_WIDTH}}>{record.ttl}</Typography.Text>
-        // )
-    },
-    {
-        title: <>-Log<sub>10</sub> P<sub>adj</sub></>,
-        dataIndex: 'logp',
-        key: 'logp',
-        sorter: (a, b) => a.logp - b.logp,
-        width: LOGP_WIDTH,
-        align: "center"
-    },
-    {
-        title: <>GSE</>,
-        dataIndex: 'gse',
-        key: 'gse',
-        width: GSE_WIDTH,
-        render: (text) => <a href={`https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=${text}`} target='_blank'>{text}</a>
-    },
-    
-]
+const Search = Input.Search;
 
 
 const configureRows = (rawRows) => {
@@ -69,36 +33,71 @@ const configureCsvOutput = (rows) => {
 }
 
 
+const TableComponent =  ({props}) => {
+    const [rowsBuffer, setRowsBuffer] = useState(configureRows(props.tableRows));
+    const [rows, setRows] = useState(rowsBuffer);
+    const [searchText, setSearchText] = useState("");
+
+    const onSearch = e => {
+        const reg = new RegExp(e.target.value, "gi");
+        
+        const filteredData = rowsBuffer.map(record => {
+        
+            const titleMatch = record["ttl"].match(reg);
+            const gseMatch = record["gse"].match(reg);
+            if (!titleMatch && !gseMatch){
+                return null;
+            }
+            return record;
+        }).filter(record => !!record);
+        setSearchText(e.target.value);        
+        setRows(e.target.value ? filteredData : rowsBuffer);
+        
+    }
 
 
-const ResultTableComponent = (props) => {
-    if (props.showTable){
-        // console.log(props.tableRows);
-        const rows = configureRows(props.tableRows);
-        // console.log(rows);
-        return (
-            <div className='container pu'>
-                <Divider />
-                <div className='row pb-3'></div>
-                <Table dataSource={rows} columns={columns} expandable={{
-                    expandedRowRender: (record) => (
-                        <div className='row justify-content-center px-2'>
-                            <p style={{margin: 0,}}>{record.ttl}</p>
-                        </div>
-                    ),
-                    // rowExpandable: (record) => console.log(record),
-                }}/>
-                <div className='col-md-2' align="left">
-                    <CSVLink data={configureCsvOutput(rows)} filename='coresh_result_table.csv' className='btn btn-primary' target='_blank'>Download CSV</CSVLink>
-                </div>
+
+    return (
+        <div className='container pu'>
+            <Divider />
+            <div className='row pb-2'></div>
+            <div className='row pb-2'>
+                <Search
+                    size="large"
+                    placeholder='Search Records'
+                    onChange={onSearch}
+                    ref = {elem => (setSearchText(searchText))}
+                    value = {searchText}
+                    onPressEnter={onSearch}
+                />
             </div>
-        );    
+            <Table dataSource={rows} columns={columns} expandable={{
+                expandedRowRender: (record) => (
+                    <div className='row justify-content-center px-2'>
+                        <p style={{margin: 0,}}>{record.ttl}</p>
+                    </div>
+                ),
+            }}
+            />
+            <div className='col-md-2' align="left">
+                <CSVLink data={configureCsvOutput(rows)} filename='coresh_result_table.csv' className='btn btn-primary' target='_blank'>Download CSV</CSVLink>
+            </div>
+        </div>
+    )
+
+}
+
+
+
+const TableComponentWrapper = (props) => {
+    if (props.showTable){
+        return(<TableComponent props={props}></TableComponent>);
     } else {
-        return(
-            <div></div>
-        )
+        return(<div></div>);
     }
 }
 
-export default ResultTableComponent;
+
+
+export default TableComponentWrapper;
    

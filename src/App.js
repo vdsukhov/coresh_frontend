@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import HeaderComponent from './Components/HeaderComponent';
 import SearchFormComponent from './Components/SearchFormComponent';
-import ResultTableComponent from './Components/ResultTableComponent';
+import TableComponentWrapper from './Components/ResultTableComponent';
 import { useState } from 'react';
 
 
@@ -26,7 +26,7 @@ function App(){
                 setTableRows={setTableRows}
                 setShowTable={setShowTable}
             />
-            <ResultTableComponent showTable={showTable} tableRows={tableRows}/>
+            <TableComponentWrapper showTable={showTable} tableRows={tableRows}/>
         </div>
     )
 }

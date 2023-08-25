@@ -26,11 +26,11 @@ const SearchFormComponent = (props) => {
 
 	return (
 		<div className="row justify-content-center px-2">
-			<div className="col-md-8">
+			<div className="col-lg-8">
 				<form onSubmit={submit}>
 					<RadioGroupComponent val="Query Species:" options={["Homo Sapiens", "Mus Musculus"]} inp_type="query"></RadioGroupComponent>
 					<RadioGroupComponent val="Database Species:" options={["Homo Sapiens", "Mus Musculus"]} inp_type="db"></RadioGroupComponent>
-					<div className="col-md-11 mx-auto mb-2 px-2">
+					<div className="col-md-9 mx-auto mb-2 px-2">
 						<textarea className="form-control z-depth-1" id="genes" rows="5" placeholder='Gene list (separated by newline/whitespace/tab)' required>
 						</textarea>
 					</div>

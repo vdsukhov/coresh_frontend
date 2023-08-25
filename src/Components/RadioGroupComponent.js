@@ -4,10 +4,10 @@ import React from 'react';
 const RadioGroupComponent = (props) => {
 	return(
 		<div className='row'>
-			<div className={"col-md-3"} align="left">
+			<div className={"col-sm-2"} align="right">
 				<p>{props.val}</p>
 			</div>
-			<div className={"col-md-9"} align="left">
+			<div className={"col-sm-6"} align="left">
 				{props.options.map((arg) => {
 					return(
 					<div className={"form-check form-check-inline"}>
