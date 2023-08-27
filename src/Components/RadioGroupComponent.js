@@ -4,7 +4,7 @@ import React from 'react';
 const RadioGroupComponent = (props) => {
 	return(
 		<div className='row'>
-			<div className={"col-sm-2"} align="right">
+			<div className={"col-sm-2"} align="left">
 				<p>{props.val}</p>
 			</div>
 			<div className={"col-sm-6"} align="left">

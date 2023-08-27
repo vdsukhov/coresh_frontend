@@ -21,7 +21,8 @@ export default [
         key: 'logp',
         sorter: (a, b) => a.logp - b.logp,
         width: LOGP_WIDTH,
-        align: "center"
+        align: "center",
+        render: (value) => Math.round(value * 100) / 100
     },
     {
         title: <>GSE</>,

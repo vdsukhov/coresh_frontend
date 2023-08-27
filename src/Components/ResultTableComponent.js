@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import { Divider, Table, Input} from 'antd';
 import "../css_styles/antd_styles.css";
 import { CSVLink } from 'react-csv';
 import columns from '../utils/column_structure'
+import {Button} from 'antd';
+import { DownloadOutlined } from '@ant-design/icons';
+import Icon from '@ant-design/icons/lib/components/Icon';
 
 const Search = Input.Search;
 
@@ -34,7 +37,8 @@ const configureCsvOutput = (rows) => {
 
 
 const TableComponent =  ({props}) => {
-    const [rowsBuffer, setRowsBuffer] = useState(configureRows(props.tableRows));
+    const rowsBuffer = configureRows(props.tableRows);
+    // const [rowsBuffer, setRowsBuffer] = useState(configureRows(props.tableRows));
     const [rows, setRows] = useState(rowsBuffer);
     const [searchText, setSearchText] = useState("");
 
@@ -73,14 +77,23 @@ const TableComponent =  ({props}) => {
             </div>
             <Table dataSource={rows} columns={columns} expandable={{
                 expandedRowRender: (record) => (
-                    <div className='row justify-content-center px-2'>
-                        <p style={{margin: 0,}}>{record.ttl}</p>
+                    <div className='row'>
+                        <div className='col-sm-11'><span>{record.ttl}</span></div>
+                        <div className='col-sm-1'>
+                            <a href={`https://artyomovlab.wustl.edu/phantasus/?geo=${record.gse}`} target='_blank'><img src="https://artyomovlab.wustl.edu/phantasus/favicon.ico" width='16' height='16'/></a>
+                        </div>
                     </div>
                 ),
             }}
             />
             <div className='col-md-2' align="left">
-                <CSVLink data={configureCsvOutput(rows)} filename='coresh_result_table.csv' className='btn btn-primary' target='_blank'>Download CSV</CSVLink>
+                <CSVLink data={configureCsvOutput(rows)} filename='coresh_result_table.csv' target='_blank'>
+                    <Button type="primary" icon={<DownloadOutlined style={{verticalAlign: 'middle', display: 'inline-block'}}/>} 
+                        shape='circle' size='default'>
+                    </Button>
+                </CSVLink>
+                
+                
             </div>
         </div>
     )
