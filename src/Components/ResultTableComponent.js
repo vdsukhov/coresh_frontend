@@ -3,7 +3,7 @@ import { Divider, Table, Input} from 'antd';
 import "../css_styles/antd_styles.css";
 import { CSVLink } from 'react-csv';
 import columns from '../utils/column_structure'
-import {Button} from 'antd';
+import {Button, Pagination} from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 import Icon from '@ant-design/icons/lib/components/Icon';
 
@@ -59,6 +59,9 @@ const TableComponent =  ({props}) => {
         
     }
 
+    const [pageSize, setPageSize] = useState(50);
+    const [currentPage, setCurrentPage] = useState(1);
+
 
 
     return (
@@ -84,6 +87,9 @@ const TableComponent =  ({props}) => {
                         </div>
                     </div>
                 ),
+            }}
+            pagination={{
+                defaultCurrent: currentPage, defaultPageSize: 50, pageSizeOptions: [50, 100, 250, 500],
             }}
             />
             <div className='col-md-2' align="left">

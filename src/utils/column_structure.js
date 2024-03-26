@@ -1,5 +1,5 @@
 const RANK_WIDTH = 70;
-const LOGP_WIDTH = 120;
+const LOGP_WIDTH = 150;
 const GSE_WIDTH = 150;
 
 export default [
@@ -16,7 +16,7 @@ export default [
         ellipsis: true
     },
     {
-        title: <>-log<sub>10</sub> p<sub>adj</sub></>,
+        title: <>log<sub>10</sub> P-adjust</>,
         dataIndex: 'logp',
         key: 'logp',
         sorter: (a, b) => a.logp - b.logp,
