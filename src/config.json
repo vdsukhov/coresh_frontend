@@ -1,0 +1,5 @@
+{
+    "BACKEND_SUBMIT_GENES": "http://localhost:8000/submit-genes",
+    "BACKEND_CHECK_JOB": "http://localhost:8000/check-job",
+    "BACKEND_GET_FINAL_TABLE": "http://localhost:8000/get-final-table"
+}

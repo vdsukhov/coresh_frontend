@@ -17,6 +17,7 @@ const RadioGroupComponent = (props) => {
 								value={arg}
 								id={props.inp_type.concat("_", arg)}
 								required={true}
+								onChange={props.onChange}
 						/>
 						<label className={"form-check-label"} htmlFor={props.inp_type.concat("_", arg)}>{arg}</label>
 					</div>

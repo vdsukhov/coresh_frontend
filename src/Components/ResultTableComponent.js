@@ -28,7 +28,7 @@ const configureCsvOutput = (rows) => {
     const header = ["rank", "title", "-log10(padj)", "gse"];
     const res = [header];
     for (let i = 0; i < rows.length; i++){
-        const row_2_add = [rows[i].rank, rows[i].ttl, rows[i].logp, rows[i].gse];
+        const row_2_add = [Number(rows[i].rank), rows[i].ttl, Number(rows[i].logp), rows[i].gse];
         res.push(row_2_add);
     }
 
@@ -113,4 +113,3 @@ const TableComponentWrapper = (props) => {
 
 
 export default TableComponentWrapper;
-   
