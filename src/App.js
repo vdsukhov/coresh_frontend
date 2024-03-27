@@ -4,10 +4,11 @@ import HeaderComponent from './Components/HeaderComponent';
 import SearchFormComponent from './Components/SearchFormComponent';
 import TableComponentWrapper from './Components/ResultTableComponent';
 import ProgressBar from './Components/ProgressBar';
+import BioLab from './Components/bioLab';
 import { useState } from 'react';
 
 
-function App(){
+function App() {
     const [queryOrganism, setQueryOrganism] = useState("");
     const [organismDb, setOrganismDb] = useState("");
     const [queryGenes, setQueryGenes] = useState([]);
@@ -15,11 +16,12 @@ function App(){
     const [showTable, setShowTable] = useState(false);
     const [showProgressBar, setShowProgressBar] = useState(false);
     const [progressPercent, setProgressPercent] = useState(0);
+    const [showBioLab, setShowBioLab] = useState(false);
 
-    return(
+    return (
         <div className='App'>
-            <HeaderComponent/>
-            <SearchFormComponent 
+            <HeaderComponent />
+            <SearchFormComponent
                 queryOrganism={queryOrganism}
                 setQueryOrganism={setQueryOrganism}
                 organismDb={organismDb}
@@ -30,9 +32,11 @@ function App(){
                 setShowTable={setShowTable}
                 setShowProgressBar={setShowProgressBar}
                 setProgressPercent={setProgressPercent}
+                setShowBioLab={setShowBioLab}
             />
+            <BioLab showBioLab={showBioLab}></BioLab>
             <ProgressBar showProgressBar={showProgressBar} progressPercent={progressPercent}></ProgressBar>
-            <TableComponentWrapper showTable={showTable} tableRows={tableRows}/>
+            <TableComponentWrapper showTable={showTable} tableRows={tableRows} />
         </div>
     )
 }

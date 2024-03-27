@@ -1,5 +1,5 @@
 {
-    "BACKEND_SUBMIT_GENES": "http://localhost:8000/submit-genes",
-    "BACKEND_CHECK_JOB": "http://localhost:8000/check-job",
-    "BACKEND_GET_FINAL_TABLE": "http://localhost:8000/get-final-table"
+    "BACKEND_SUBMIT_GENES": "https://ctlab.itmo.ru/geseca-back/submit-genes",
+    "BACKEND_CHECK_JOB": "https://ctlab.itmo.ru/geseca-back/check-job",
+    "BACKEND_GET_FINAL_TABLE": "https://ctlab.itmo.ru/geseca-back/get-final-table"
 }
