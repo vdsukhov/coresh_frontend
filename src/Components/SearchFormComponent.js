@@ -90,7 +90,7 @@ const SearchFormComponent = (props) => {
 	}
 
 	return (
-		<div className="row justify-content-center px-2">
+		<div className="row justify-content-center px-2 py-4">
 			<div className="col-lg-8">
 				<form onSubmit={submit}>
 
