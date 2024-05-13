@@ -1,5 +1,6 @@
 const RANK_WIDTH = 70;
 const LOGP_WIDTH = 150;
+const PCTVAR_WIDTH = 70;
 const GSE_WIDTH = 150;
 
 export default [
@@ -14,6 +15,14 @@ export default [
         dataIndex: 'ttl',
         key: 'ttl',
         ellipsis: true
+    },
+    {
+        title: <>pctVar</>,
+        dataIndex: 'pctVar',
+        key: 'pctVar',
+        sorter: (a, b) => a.pctVar - b.pctVar,
+        width: PCTVAR_WIDTH,
+        render: (value) => Math.round(value * 100) / 100
     },
     {
         title: <>log<sub>10</sub> P-adjust</>,
@@ -31,5 +40,5 @@ export default [
         width: GSE_WIDTH,
         render: (text) => <a href={`https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=${text}`} target='_blank'>{text}</a>
     },
-    
+
 ];

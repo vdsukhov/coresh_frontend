@@ -17,6 +17,7 @@ const configureRows = (rawRows) => {
             key: (i + 1).toString(),
             rank: (i + 1),
             ttl: rawRows[i].gseTitle,
+            pctVar: rawRows[i].pctVar,
             logp: rawRows[i].log10Padj,
             gse: rawRows[i].gseId,
             summary: rawRows[i].gseSummary
@@ -29,7 +30,7 @@ const configureCsvOutput = (rows) => {
     const header = ["rank", "title", "-log10(padj)", "gse"];
     const res = [header];
     for (let i = 0; i < rows.length; i++) {
-        const row_2_add = [Number(rows[i].rank), rows[i].ttl, Number(rows[i].logp), rows[i].gse];
+        const row_2_add = [Number(rows[i].rank), rows[i].ttl, Number(rows[i].pctVar), Number(rows[i].logp), rows[i].gse];
         res.push(row_2_add);
     }
 
@@ -61,7 +62,7 @@ const TableComponent = ({ props }) => {
 
     }
 
-    const [pageSize, setPageSize] = useState(50);
+    // const [pageSize, setPageSize] = useState(500);
     const [currentPage, setCurrentPage] = useState(1);
 
 
@@ -100,7 +101,7 @@ const TableComponent = ({ props }) => {
                 ),
             }}
                 pagination={{
-                    defaultCurrent: currentPage, defaultPageSize: 50, pageSizeOptions: [50, 100, 250, 500],
+                    defaultCurrent: currentPage, defaultPageSize: 500, pageSizeOptions: [50, 100, 250, 500, 1000],
                 }}
             />
             <div className='col-md-2' align="left">
