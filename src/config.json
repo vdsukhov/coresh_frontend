@@ -1,5 +1,6 @@
 {
     "BACKEND_SUBMIT_GENES": "https://ctlab.itmo.ru/geseca-back/submit-genes",
     "BACKEND_CHECK_JOB": "https://ctlab.itmo.ru/geseca-back/check-job",
-    "BACKEND_GET_FINAL_TABLE": "https://ctlab.itmo.ru/geseca-back/get-final-table"
+    "BACKEND_GET_FINAL_TABLE": "https://ctlab.itmo.ru/geseca-back/get-final-table",
+    "BACKEND_ENRICHED_WORDS": "https://ctlab.itmo.ru/geseca-back/get-enriched-words"
 }

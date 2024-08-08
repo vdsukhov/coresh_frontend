@@ -37,7 +37,9 @@ async function requestsWrapper(
 	setProgressPercent,
 	setShowTable,
 	setTableRows,
-	setShowBioLab) {
+	setShowBioLab,
+	setEnrichedWords,
+	setShowWordTabs) {
 	setShowTable(false);
 	setShowProgressBar(true);
 	setProgressPercent(0);
@@ -62,7 +64,19 @@ async function requestsWrapper(
 		setProgressPercent(Math.round(percent));
 		await new Promise(r => setTimeout(r, 5000));
 	}
-	let finalTable = await getRequest(`${configData.BACKEND_GET_FINAL_TABLE}?jobid=${jobId}`)
+	let finalTable = await getRequest(`${configData.BACKEND_GET_FINAL_TABLE}?jobid=${jobId}`);
+	// let finalTable = await getRequest("http://127.0.0.1:9000/result.json");
+
+	// temp
+	// let enrichedWords = await getRequest('../../ext/words_enrichment.json');
+	// setEnrichedWords(enrichedWords);
+	// let enrichedWords = await getRequest("http://127.0.0.1:9000/words_enrichment.json");
+
+	let enrichedWords = await getRequest(`${configData.BACKEND_ENRICHED_WORDS}?jobid=${jobId}`);
+
+	setShowWordTabs(true);
+	setEnrichedWords(enrichedWords);
+
 
 	setProgressPercent(100);
 	setShowBioLab(false);
@@ -71,10 +85,14 @@ async function requestsWrapper(
 }
 
 
+
+
 const SearchFormComponent = (props) => {
+	// fakeWords(props.setEnrichedWords);
 
 	const submit = e => {
 		e.preventDefault();
+
 		const dataToSend = {
 			organism: props.queryOrganism,
 			dbType: props.organismDb,
@@ -84,7 +102,7 @@ const SearchFormComponent = (props) => {
 		console.log(dataToSend);
 		requestsWrapper(configData, dataToSend, props.setShowProgressBar,
 			props.setProgressPercent, props.setShowTable, props.setTableRows,
-			props.setShowBioLab);
+			props.setShowBioLab, props.setEnrichedWords, props.setShowWordTabs);
 		// props.setShowBioLab(false);
 
 	}
