@@ -27,7 +27,7 @@ const configureRows = (rawRows) => {
 }
 
 const configureCsvOutput = (rows) => {
-    const header = ["rank", "title", "-log10(padj)", "gse"];
+    const header = ["rank", "title", "pctVar", "-log10(padj)", "gse"];
     const res = [header];
     for (let i = 0; i < rows.length; i++) {
         const row_2_add = [Number(rows[i].rank), rows[i].ttl, Number(rows[i].pctVar), Number(rows[i].logp), rows[i].gse];
