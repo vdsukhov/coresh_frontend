@@ -9,8 +9,8 @@ import { Flex, Progress } from 'antd';
 const ProgressBar = (props) => {
     if (props.showProgressBar) {
         return (
-            <div>
-                <div className="row justify-content-center px-2">
+            <div className='container'>
+                <div className="row justify-content-center">
                     <div className="col-lg-4">
                         <Flex gap='small' vertical>
                             <Progress percent={props.progressPercent} />

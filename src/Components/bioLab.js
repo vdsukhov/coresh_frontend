@@ -3,7 +3,7 @@ import React from 'react';
 const BioLab = (props) => {
     if (props.showBioLab) {
         return (
-            <div>
+            <div className='container'>
                 <div className="row justify-content-center pb-2 pu-2">
                     <div className='col-lg-4'>
                         <video autoplay="autoplay" loop width="160" height="160">
