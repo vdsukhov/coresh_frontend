@@ -55,22 +55,27 @@ export const WordTabs = (props) => {
         {
             key: '1',
             label: 'Enriched Words',
-            children: <WordsTable enrichedWords={props.enrichedWords} />,
+            children:
+                <div className="d-flex justify-content-center">
+                    <div className="col-lg-10">
+                        <WordsTable enrichedWords={props.enrichedWords} />
+                    </div>
+                </div>,
         },
     ];
 
     if (props.showTabs) {
         return (
-            <div className="row justify-content-center px-2 py-4">
-                <div className="row justify-content-center col-lg-11">
-                    <div className="col-lg-8">
+            <div className="container px-2 py-4">
+                <div className="row justify-content-center">
+                    <div className="col-lg-10">
                         <Tabs type='card' defaultActiveKey="1" items={items} />
                     </div>
                 </div>
             </div>
         );
     } else {
-        return <div></div>;
+        return null;
     }
 };
 

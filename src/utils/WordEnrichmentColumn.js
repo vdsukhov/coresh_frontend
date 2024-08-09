@@ -1,6 +1,5 @@
-const RANK_WIDTH = 70;
-const LOGP_WIDTH = 150;
-const LOGPADJ_WIDTH = 150;
+const COL_WIDTH_A = 100;
+const COL_WIDTH_B = 2 * COL_WIDTH_A;
 
 const formatNumber = (value) => {
     return value < 1e-4 ? value.toExponential(1) : value.toPrecision(2);
@@ -12,27 +11,28 @@ export default [
         dataIndex: 'word',
         key: 'word',
         ellipsis: true,
+        width: COL_WIDTH_B,
         align: 'center',
     },
     {
         title: <>Freq</>,
         dataIndex: 'freq',
         key: 'freq',
-        width: LOGP_WIDTH,
+        width: COL_WIDTH_A,
         align: "center",
     },
     {
         title: <>FreqInTop</>,
         dataIndex: 'freqInTop',
         key: 'freqInTop',
-        width: LOGP_WIDTH,
+        width: COL_WIDTH_A,
         align: "center",
     },
     {
         title: <>P-value</>,
         dataIndex: 'pval',
         key: 'pval',
-        width: LOGP_WIDTH,
+        width: COL_WIDTH_A,
         align: "center",
         render: (value) => formatNumber(value),
     },
@@ -40,7 +40,7 @@ export default [
         title: <>P-adjust</>,
         dataIndex: 'padj',
         key: 'padj',
-        width: LOGP_WIDTH,
+        width: COL_WIDTH_A,
         align: "center",
         render: (value) => formatNumber(value),
     },
