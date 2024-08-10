@@ -1,4 +1,4 @@
-# CORESH FRONTEND
+# CORESH FRONTEND <img src="./src/assets/coresh_white.png" align="right" height="30"/>
 
 Welcome to the Coregulation Search Engine (CORESH) frontend repository! This project aims to provide a user-friendly interface for searching co-regulated gene sets within publicly available datasets. The search engine allows researchers and bioinformaticians to explore and analyze gene expression patterns, identifying groups of genes that are co-regulated under different conditions.
 
