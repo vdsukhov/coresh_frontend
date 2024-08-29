@@ -1,5 +1,5 @@
 import React, { Children, useState } from 'react';
-import { Tabs, Table } from 'antd';
+import { Tabs, Table, Switch } from 'antd';
 import columns from '../utils/WordEnrichmentColumn'
 
 
@@ -64,14 +64,26 @@ export const WordTabs = (props) => {
         },
     ];
 
+    const [toggleTabs, setToggleTabs] = useState(false);
+
     if (props.showTabs) {
         return (
             <div className="container px-2 py-4">
                 <div className="row justify-content-center">
-                    <div className="col-lg-10">
-                        <Tabs type='card' defaultActiveKey="1" items={items} />
+                    <div className="col-lg-12 d-flex align-items-center">
+                        <div className="d-flex align-items-center px-2 py-2">
+                            <Switch checked={toggleTabs} size="medium" onChange={() => setToggleTabs(!toggleTabs)} />
+                            <span style={{ marginLeft: '8px' }}>Show Word Analysis</span>
+                        </div>
                     </div>
                 </div>
+                {toggleTabs && (
+                    <div className="row justify-content-center">
+                        <div className="col-lg-10">
+                            <Tabs type="card" defaultActiveKey="1" items={items} />
+                        </div>
+                    </div>
+                )}
             </div>
         );
     } else {
