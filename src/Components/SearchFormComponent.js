@@ -41,9 +41,11 @@ async function requestsWrapper(
 	setEnrichedWords,
 	setShowWordTabs) {
 	setShowTable(false);
+	setShowWordTabs(false);
 	setShowProgressBar(true);
 	setProgressPercent(0);
 	setShowBioLab(true);
+
 	let jobId = await submitGenes(configData.BACKEND_SUBMIT_GENES, data);
 	console.log(jobId);
 	jobId = jobId['ID'];

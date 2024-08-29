@@ -18,20 +18,25 @@ export default [
         title: <>Freq</>,
         dataIndex: 'freq',
         key: 'freq',
+        sorter: (a, b) => a.freq - b.freq,
         width: COL_WIDTH_A,
         align: "center",
+
     },
     {
         title: <>FreqInTop</>,
         dataIndex: 'freqInTop',
         key: 'freqInTop',
+        sorter: (a, b) => a.freqInTop - b.freqInTop,
         width: COL_WIDTH_A,
         align: "center",
+
     },
     {
         title: <>P-value</>,
         dataIndex: 'pval',
         key: 'pval',
+        sorter: (a, b) => b.pval - a.pval,
         width: COL_WIDTH_A,
         align: "center",
         render: (value) => formatNumber(value),
@@ -42,6 +47,7 @@ export default [
         key: 'padj',
         width: COL_WIDTH_A,
         align: "center",
+        sorter: (a, b) => b.padj - a.padj,
         render: (value) => formatNumber(value),
     },
 ];

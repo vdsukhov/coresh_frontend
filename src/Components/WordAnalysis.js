@@ -48,6 +48,19 @@ const WordsTable = ({ enrichedWords }) => {
 
 
 
+export const Slider = (props) => {
+    return (
+        <div className="row justify-content-center">
+            <div className="col-lg-12 d-flex align-items-center">
+                <div className="d-flex align-items-center px-2 py-2">
+                    <Switch checked={props.toggleTabs} size="medium" onChange={() => props.setToggleTabs(!props.toggleTabs)} />
+                    <span style={{ marginLeft: '8px' }}>Show Word Analysis</span>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 
 
 export const WordTabs = (props) => {
@@ -69,14 +82,7 @@ export const WordTabs = (props) => {
     if (props.showTabs) {
         return (
             <div className="container px-2 py-4">
-                <div className="row justify-content-center">
-                    <div className="col-lg-12 d-flex align-items-center">
-                        <div className="d-flex align-items-center px-2 py-2">
-                            <Switch checked={toggleTabs} size="medium" onChange={() => setToggleTabs(!toggleTabs)} />
-                            <span style={{ marginLeft: '8px' }}>Show Word Analysis</span>
-                        </div>
-                    </div>
-                </div>
+                <Slider toggleTabs={toggleTabs} setToggleTabs={setToggleTabs}></Slider>
                 {toggleTabs && (
                     <div className="row justify-content-center">
                         <div className="col-lg-10">
