@@ -1,6 +1,6 @@
 const RANK_WIDTH = 70;
 const LOGP_WIDTH = 150;
-const PCTVAR_WIDTH = 70;
+const PCTVAR_WIDTH = 80;
 const GSE_WIDTH = 150;
 
 export default [
@@ -22,6 +22,7 @@ export default [
         key: 'pctVar',
         sorter: (a, b) => a.pctVar - b.pctVar,
         width: PCTVAR_WIDTH,
+        align: "center",
         render: (value) => Math.round(value * 100) / 100
     },
     {
