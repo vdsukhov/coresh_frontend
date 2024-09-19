@@ -116,12 +116,19 @@ const SearchFormComponent = (props) => {
 					<form onSubmit={submit}>
 
 						<RadioGroupComponent
-							val="Query Species:" options={["Homo Sapiens", "Mus Musculus"]} inp_type="query"
+							val="Query Species"
+							options={["Homo Sapiens", "Mus Musculus"]}
+							inp_type="query"
 							onChange={event => props.setQueryOrganism(ORG2SHORT[event.target.value])}
+							tooltipText="The Query Species radio button lets you select the organism corresponding to your gene list."
 						></RadioGroupComponent>
+
 						<RadioGroupComponent
-							val="Database Species:" options={["Homo Sapiens", "Mus Musculus"]} inp_type="db"
+							val="Database Species"
+							options={["Homo Sapiens", "Mus Musculus"]}
+							inp_type="db"
 							onChange={event => props.setOrganismDb(ORG2SHORT[event.target.value])}
+							tooltipText="The Database Species option controls which organism’s database will be used for the coregulation search."
 						></RadioGroupComponent>
 
 						<div className="col-md-12 mx-auto mb-2">
