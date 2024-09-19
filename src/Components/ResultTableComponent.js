@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { Divider, Table, Input } from 'antd';
 import "../css_styles/antd_styles.css";
 import { CSVLink } from 'react-csv';
-import columns from '../utils/column_structure'
+import columns from '../utils/GseRecordColumns'
 import { Button, Pagination } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 import Icon from '@ant-design/icons/lib/components/Icon';
@@ -17,6 +17,7 @@ const configureRows = (rawRows) => {
             key: (i + 1).toString(),
             rank: (i + 1),
             ttl: rawRows[i].gseTitle,
+            size: rawRows[i].size,
             pctVar: rawRows[i].pctVar,
             logp: rawRows[i].log10Padj,
             gse: rawRows[i].gseId,
@@ -30,7 +31,7 @@ const configureCsvOutput = (rows) => {
     const header = ["rank", "title", "pctVar", "-log10(padj)", "gse"];
     const res = [header];
     for (let i = 0; i < rows.length; i++) {
-        const row_2_add = [Number(rows[i].rank), rows[i].ttl, Number(rows[i].pctVar), Number(rows[i].logp), rows[i].gse];
+        const row_2_add = [Number(rows[i].rank), rows[i].ttl, Number(rows[i].size), Number(rows[i].pctVar), Number(rows[i].logp), rows[i].gse];
         res.push(row_2_add);
     }
 
